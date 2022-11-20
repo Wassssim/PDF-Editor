@@ -25,7 +25,7 @@ function UploadDropZone({ onFileAdded } : UploadDropZoneProps) {
             {...getRootProps({ 
                 className: `upload-dropzone ${isDragActive?'active':''}`,
                 onClick: event => {
-                    if (event.target.type != 'button') {
+                    if ( !(event.target as HTMLButtonElement).type) {
                         event.stopPropagation();
                     }
                 }
