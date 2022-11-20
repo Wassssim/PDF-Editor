@@ -1,0 +1,15 @@
+.upload-dropzone {
+    text-align: center;
+    padding: 20px;
+    border: 3px var(--border-color) dashed;
+    margin: auto;
+    min-height: 140px;
+}
+
+.upload-dropzone.active {
+    border: 3px var(--border-color-active) dashed;
+}
+
+.file-description {
+    margin-top: 15px;
+}
