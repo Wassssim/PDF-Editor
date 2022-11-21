@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react'
-import { FileWithPath } from "React-dropzone";
+import { FileWithPath } from "react-dropzone";
 import './App.css'
 import UploadDropZone from './UploadDropZone/UploadDropZone'
 

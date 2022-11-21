@@ -1,4 +1,4 @@
-import { FileWithPath, useDropzone } from "React-dropzone";
+import { FileWithPath, useDropzone } from "react-dropzone";
 import './UploadDropZone.css';
 
 interface UploadDropZoneProps {
