@@ -1,0 +1,27 @@
+.PdfEditTool {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropzone{
+    width: 100%;
+    margin-bottom: 50px;
+}
+  
+.upload-progress {
+    width: 80%;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload-progress > * {
+    margin-left: 15px;
+}
+
+.progressbar {
+    width: 93%;
+}

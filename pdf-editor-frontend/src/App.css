@@ -1,23 +1,11 @@
-#root {
-  text-align: center;
-}
-
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
 .App{
-  min-height: 99vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
-.dropzone{
-  width: 100%;
-  padding: 100px;
+
+html, body, #root, .App {
+  height: 100%
 }

@@ -2,7 +2,7 @@ import { FileWithPath, useDropzone } from "react-dropzone";
 import './UploadDropZone.css';
 
 interface UploadDropZoneProps {
-    onFileAdded: (files: FileWithPath[]) => FileWithPath;
+    onFileAdded: (files: FileWithPath[]) => void;
 }
 
 function UploadDropZone({ onFileAdded } : UploadDropZoneProps) {
