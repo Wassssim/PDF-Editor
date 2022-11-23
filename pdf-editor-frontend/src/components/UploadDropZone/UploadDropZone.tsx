@@ -1,4 +1,5 @@
 import { FileWithPath, useDropzone } from "react-dropzone";
+import { useTranslation } from "react-i18next";
 import './UploadDropZone.css';
 
 interface UploadDropZoneProps {
@@ -6,6 +7,7 @@ interface UploadDropZoneProps {
 }
 
 function UploadDropZone({ onFileAdded } : UploadDropZoneProps) {
+    const { t } = useTranslation();
     const { getRootProps, getInputProps, isDragActive, acceptedFiles  } = useDropzone({
         accept: {
             'application/pdf': ['.pdf'],
@@ -36,13 +38,13 @@ function UploadDropZone({ onFileAdded } : UploadDropZoneProps) {
                 <p className="dropzone-content">
                     {isDragActive 
                         ? 
-                            ("Release to drop the files here") 
+                            t('releaseFileHere.label')
                         : 
-                            ("Drag and drop PDF file here, or click to select it")
+                            t('dragDropHere.label')
                     }
                 </p>
                 <button type="button">
-                Click to select files
+                    {t('selectPDFFileBtn.label')}
                 </button>
                 {files}
             </div>

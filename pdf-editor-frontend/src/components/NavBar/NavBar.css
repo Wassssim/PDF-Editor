@@ -1,0 +1,15 @@
+.NavBar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 50px;
+}
+
+.NavBar > * {
+    margin: 40px 35px 25px 25px;
+}

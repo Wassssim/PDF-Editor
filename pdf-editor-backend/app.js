@@ -4,7 +4,7 @@ const cors = require('cors');
 const _ = require('lodash');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const { writeFile } = require('fs').promises;
+const { writeFile, readFile } = require('fs').promises;
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -18,6 +18,7 @@ app.use(fileUpload({
 app.use(bodyParser.json());
 
 // logger
+// TODO: save log to file
 app.use(morgan('dev'));
 
 app.use(cors());
@@ -46,12 +47,31 @@ app.post('/api/pdf/upload', async (req, res) => {
             });        
         }
     } catch (err) {
-        res.send({
+        res.status(500).send({
             status: false,
             message: err
-        })
+        });
     }
 });
+
+app.get('/api/assets/i18n/:lang/:ns', async (req, res) => {
+    const { ns, lang } = req.params;
+    const path = `./storage/i18n/${ns}/${lang}.json`;
+
+    try {
+        const data = await readFile(path, 'utf8');
+        res.send({
+            status: true,
+            data: JSON.parse(data)
+        });
+    } catch (err) {
+        res.status(500).json({
+            status: false,
+            message: err
+        });
+    }
+})
+
 
 app.listen(port, () => {
     console.log(`app listening at http://localhost:${port}`);

@@ -12,6 +12,10 @@ function PdfEditTool() {
   const pdfApi = new PdfApiService();
 
   const onFileAdded = useCallback(async (acceptedFiles: FileWithPath[]) => {
+    if (acceptedFiles.length === 0) {
+      return;
+    }
+    
     try {
       setProgress(0);
       const response = await pdfApi.uploadPdf(acceptedFiles[0], (progressEvent: any) => setProgress(progressEvent.loaded * 100/progressEvent.total));
