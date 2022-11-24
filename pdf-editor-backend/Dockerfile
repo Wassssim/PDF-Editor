@@ -1,4 +1,4 @@
-FROM node:16-apline
+FROM node:16-alpine
 
 # optimize for production
 ENV NODE_ENV production
@@ -11,6 +11,6 @@ RUN npm ci --only=production
 
 USER node
 
-EXPOSE 3000
+EXPOSE 5000
 
 CMD [ "node", "app.js" ]
