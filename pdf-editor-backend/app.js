@@ -76,3 +76,18 @@ app.get('/api/assets/i18n/:lang/:ns', async (req, res) => {
 app.listen(port, () => {
     console.log(`app listening at http://localhost:${port}`);
 });
+
+// Graceful shutdown
+/*function closeGracefully(signal) {
+    console.log(`Received signal to terminate: ${signal}`);
+  
+    server.close(() => {
+      // await db.close() if we have a db connection in this app
+      // await other things we should cleanup nicely
+      console.log('Http server closed.');
+      process.exit(0);
+    });
+  }
+  
+process.on('SIGINT', closeGracefully);
+process.on('SIGTERM', closeGracefully);*/
