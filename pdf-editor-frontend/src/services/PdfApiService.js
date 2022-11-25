@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api/pdf';
+const API_URL = import.meta.env.VITE_NODE_API_BASE_URL || 'http://localhost:5000';
 
 const axiosInstance = axios.create({
     baseURL: API_URL,
@@ -15,7 +15,7 @@ export default class PdfApiService {
     async uploadPdf(file, onUploadProgress) {
         const formData = new FormData();
         formData.append('pdf_file', file);
-        const response = await axiosInstance.post(`${API_URL}/upload`, formData, {
+        const response = await axiosInstance.post(`${API_URL}/api/upload`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             },

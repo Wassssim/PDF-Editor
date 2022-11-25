@@ -2,6 +2,8 @@ import i18n from "i18next";
 import Backend from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
 
+const API_URL = import.meta.env.VITE_NODE_API_BASE_URL || 'http://localhost:5000/api';
+
 i18n
   .use(Backend)
   .use(initReactI18next)
@@ -12,7 +14,7 @@ i18n
     debug: true,
        backend: {
         /* translation file path */
-        loadPath: "http://localhost:3000/api/assets/i18n/{{lng}}/{{ns}}",
+        loadPath: `${API_URL}/api/assets/i18n/{{lng}}/{{ns}}`,
         parse: (res) => {
           return JSON.parse(res).data;
         },
