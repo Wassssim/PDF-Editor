@@ -1,4 +1,4 @@
-name: Deploy NodeJS Backend
+name: Deploy Project To Digital OCean
 
 on:
   push:
@@ -17,5 +17,5 @@ jobs:
         run: |
           docker compose build
           docker compose rm -fs
-          docker compose up -d
+          docker compose up -d --remove-orphans
         working-directory: .

@@ -6,6 +6,11 @@ services:
     ports:
       - "3000:3000"
   
+  react-frontend:
+    build: ./pdf-editor-frontend
+    ports:
+      - "8082:80"
+
   nginx:
     restart: always
     build: ./nginx
