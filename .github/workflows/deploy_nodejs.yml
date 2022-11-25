@@ -16,7 +16,6 @@ jobs:
       - name: Deploy
         run: |
           docker compose build
-          docker compose stop
-          docker compose rm
+          docker compose rm -fs
           docker compose up -d
         working-directory: .
