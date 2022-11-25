@@ -8,12 +8,15 @@ on:
 jobs:
   build:
     name: Deploy
-    runs-on: ubuntu-20.04
+    runs-on: self-hosted
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
 
       - name: Deploy
         run: |
-          docker compose restart
-        working-directory: ./pdf-editor-backend
+          docker compose build
+          docker compose stop
+          docker compose rm
+          docker compose up -d
+        working-directory: .
