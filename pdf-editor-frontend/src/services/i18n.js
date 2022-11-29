@@ -11,18 +11,22 @@ i18n
     lng: "en",   //default language
     fallbackLng: "en", //when specified language translations not present 
     //then fallbacklang translations loaded.
-    debug: true,
-       backend: {
-        /* translation file path */
-        loadPath: `${API_URL}/api/assets/i18n/{{lng}}/{{ns}}`,
-        parse: (res) => {
-          return JSON.parse(res).data;
-        },
-        customHeaders: {
-          accept: 'application/json',
-          // ...
-        },
-        //loadPath: "https://cdn.mindbowser.com/assets/i18n/{{ns}}/{{lng}}.json",
+    debug: false,
+    react: {
+      wait: false,
+      useSuspense: true,
+    },
+    backend: {
+      /* translation file path */
+      loadPath: `${API_URL}/api/assets/i18n/{{lng}}/{{ns}}`,
+      parse: (res) => {
+        return JSON.parse(res).data;
+      },
+      customHeaders: {
+        accept: 'application/json',
+        // ...
+      },
+      //loadPath: "https://cdn.mindbowser.com/assets/i18n/{{ns}}/{{lng}}.json",
     },
 /* can have multiple namespace, in case you want to divide a huge translation into smaller pieces and load them on demand */
     ns: ["translations"],
@@ -37,4 +41,8 @@ i18n
     },
   });
 
+
+
 export default i18n;
+
+export const locales = ['en', 'fr'];

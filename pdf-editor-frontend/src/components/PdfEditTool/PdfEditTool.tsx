@@ -19,10 +19,8 @@ function PdfEditTool() {
     try {
       setProgress(0);
       const response = await pdfApi.uploadPdf(acceptedFiles[0], (progressEvent: any) => setProgress(progressEvent.loaded * 100/progressEvent.total));
-      console.log(response);
       setFile(acceptedFiles[0]);
     } catch (error) {
-      console.log(error);
       setFile(null);
     }
   }, []);
