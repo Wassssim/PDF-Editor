@@ -2,13 +2,13 @@ import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select"
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Outlet } from 'react-router-dom';
 import './NavBar.css';
 
 function NavBar() {
 	const { lang } = useParams();
 	const navigate = useNavigate();
-    const { i18n } = useTranslation("translations", { useSuspense: true });
+    const { i18n } = useTranslation();
 
     const handleChange = (event: SelectChangeEvent) => {
 		navigate(`/${event.target.value as string}`);
@@ -21,6 +21,7 @@ function NavBar() {
 	}, [lang]);
 
     return (
+		<>
 			<div className="NavBar">
 				<Select
 					id="language-select"
@@ -34,6 +35,8 @@ function NavBar() {
 					<MenuItem value={"fr"}>Fr</MenuItem>
 				</Select>
 			</div>
+			<Outlet/>
+		</>
     )
 }
 

@@ -3,13 +3,16 @@ import { FileWithPath } from "react-dropzone";
 import PdfApiService from '~/services/PdfApiService';
 import LinearProgress from '@mui/material/LinearProgress';
 import UploadDropZone from '~/components/UploadDropZone/UploadDropZone';
-import './PdfEditTool.css'
+import './PdfUploader.css'
+import { useLocation, useNavigate } from 'react-router-dom';
 
-function PdfEditTool() {
+function PdfUploader() {
   // todo use react-query
   const [file, setFile] = useState<FileWithPath | null>(null);
   const [progress, setProgress] = useState<number>(-1);
   const pdfApi = new PdfApiService();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const onFileAdded = useCallback(async (acceptedFiles: FileWithPath[]) => {
     if (acceptedFiles.length === 0) {
@@ -20,6 +23,7 @@ function PdfEditTool() {
       setProgress(0);
       const response = await pdfApi.uploadPdf(acceptedFiles[0], (progressEvent: any) => setProgress(progressEvent.loaded * 100/progressEvent.total));
       setFile(acceptedFiles[0]);
+      navigate(`${location}/edit/${response.data.id}`);
     } catch (error) {
       // TODO: handle errors
       setProgress(0);
@@ -28,7 +32,7 @@ function PdfEditTool() {
   }, []);
 
   return (
-    <div className="PdfEditTool">
+    <div className="PdfUploader">
     {progress > -1
         ?
         <div className='upload-progress'>
@@ -44,4 +48,4 @@ function PdfEditTool() {
   )
 }
 
-export default PdfEditTool
+export default PdfUploader
