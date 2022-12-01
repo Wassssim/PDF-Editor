@@ -34,7 +34,9 @@ app.use(bodyParser.json());
 // TODO: save log to file
 app.use(morgan('dev'));
 
-app.use(cors());
+app.use(cors({
+    origin: '*'
+}));
 
 app.post('/api/pdf-file/upload', async (req, res) => {
     try {
@@ -70,6 +72,7 @@ app.post('/api/pdf-file/upload', async (req, res) => {
             });        
         }
     } catch (err) {
+        console.log(err);
         res.status(500).send({
             status: false,
             message: err
