@@ -1,0 +1,13 @@
+{"level":"info","message":"app listening at http://localhost:5000","service":"user-service"}
+{"level":"info","message":"connected to mongodb","service":"user-service"}
+{"level":"info","message":"app listening at http://localhost:5000","service":"user-service"}
+{"level":"info","message":"connected to mongodb","service":"user-service"}
+{"level":"info","message":"app listening at http://localhost:5000","service":"user-service"}
+{"level":"info","message":"app listening at http://localhost:5000","service":"user-service"}
+{"level":"error","service":"user-service"}
+{"level":"error","message":"Error connecting to mongodb: ","service":"user-service"}
+{"level":"error","service":"user-service"}
+{"level":"info","message":"app listening at http://localhost:5000","service":"user-service"}
+{"level":"info","message":"connected to mongodb","service":"user-service"}
+{"level":"info","message":"app listening at http://localhost:5000","service":"user-service"}
+{"level":"info","message":"connected to mongodb","service":"user-service"}

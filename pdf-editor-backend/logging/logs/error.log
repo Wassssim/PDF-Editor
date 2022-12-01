@@ -1,0 +1,3 @@
+{"level":"error","service":"user-service"}
+{"level":"error","message":"Error connecting to mongodb: ","service":"user-service"}
+{"level":"error","service":"user-service"}

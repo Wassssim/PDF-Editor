@@ -1,22 +1,6 @@
 version: "3.9"
 services:
 
-  nodejs: # TODO: make this depend on mongo
-    build: ./pdf-editor-backend
-    volumes:
-      - ./pdf-editor-backend/storage:/usr/src/app/storage
-  
-  react-frontend:
-    build: ./pdf-editor-frontend
-    ports:
-      - "8082:80"
-
-  nginx:
-    restart: always
-    build: ./nginx
-    ports:
-      - "5000:80"
-
   mongo:
     image: mongo:5.0.14
     restart: always
@@ -28,6 +12,7 @@ services:
     ports:
       - 27017:27017 # for dev, remove this later
 
+
   mongo-express:
     image: mongo-express:0.54
     restart: always
@@ -37,3 +22,29 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
       ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+    depends_on:
+      - "mongo"
+
+
+  nodejs: # TODO: make this depend on mongo
+    build: ./pdf-editor-backend
+    volumes:
+      - ./pdf-editor-backend/storage:/usr/src/app/storage
+      - ./pdf-editor-backend/logging/logs:/usr/src/app/logging/logs
+    depends_on:
+      - "mongo"
+
+
+  nginx-backend:
+    restart: always
+    build: ./pdf-editor-backend/nginx/
+    ports:
+      - "5000:80"
+    depends_on:
+      - "nodejs"
+
+
+  react-frontend:
+    build: ./pdf-editor-frontend
+    ports:
+      - "8082:80"
