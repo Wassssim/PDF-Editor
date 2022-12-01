@@ -15,7 +15,7 @@ export default class PdfApiService {
     async uploadPdf(file, onUploadProgress) {
         const formData = new FormData();
         formData.append('pdf_file', file);
-        const response = await axiosInstance.post(`${API_URL}/api/upload`, formData, {
+        const response = await axiosInstance.post(`${API_URL}/api/pdf-file/upload`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             },

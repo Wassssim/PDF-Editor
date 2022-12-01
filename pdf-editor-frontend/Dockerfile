@@ -13,7 +13,7 @@ COPY --chown=node:node . /usr/src/app/
 
 RUN npm run build
 
-FROM nginx
+FROM nginx:1.23.2-alpine
 
 COPY --from=build-stage /usr/src/app/dist /var/www/react-front/html
 
